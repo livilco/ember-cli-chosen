@@ -14,6 +14,7 @@ export default Ember.Component.extend({
   value: null,
   width: '100%',
   selectionDidChange: null,
+  createOption: false,
   _options: function() {
     var options = {};
 
@@ -21,10 +22,11 @@ export default Ember.Component.extend({
     if(!Ember.isNone(this.get('noResultsText'))) { options['no_results_text'] = this.get('noResultsText'); }
     if(!Ember.isNone(this.get('maxSelectedOptions'))) { options['max_selected_options'] = this.get('maxSelectedOptions'); }
     if(!Ember.isNone(this.get('width'))) { options['width'] = this.get('width'); }
+    if(!Ember.isNone(this.get('createOption'))) { options['create_option'] = this.get('createOption'); }
 
     return options;
   }.property('prompt', 'isRtl', 'multiple', 'disableSearchThreshold',
-             'noResultsText', 'maxSelectedOptions', 'width'),
+             'noResultsText', 'maxSelectedOptions', 'width', 'createOption'),
   _setupChosen: function() {
     var _this = this,
       options = _this.get('_options'),
